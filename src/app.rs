@@ -62,13 +62,10 @@ fn Home() -> impl IntoView {
                     <div class="hero-actions"><a class="button primary" href="#projects">"View projects "<span>"↗"</span></a><a class="button secondary" href="https://github.com/rjaysolamo">"Explore GitHub "<span>"↗"</span></a><a class="text-link" href="#contact">"Contact me"</a></div>
                     <div class="location"><span>"◎"</span>" Davao City, Philippines "<i></i>" Learning. Building. Sharing."</div>
                 </div>
-                <div class="engineering-art" aria-hidden="true">
-                    <div class="art-label">"SYSTEMS THINKING / 001"<span>"+"</span></div>
-                    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="axis axis-x"></div><div class="axis axis-y"></div>
-                    <div class="rust-emblem"><svg viewBox="0 0 200 200"><path d="M90 12h20l5 14 14 4 12-9 16 11-3 15 10 11 16-1 8 18-11 11 1 15 13 9-5 19-16 4-7 13 5 15-15 12-14-7-14 5-6 15H89l-5-15-14-5-14 7-15-12 5-15-7-13-16-4-5-19 13-9 1-15-11-11 8-18 16 1 10-11-3-15 16-11 12 9 14-4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="59" fill="none" stroke="currentColor" stroke-width="2"/><text x="100" y="125" text-anchor="middle" fill="currentColor" font-size="76" font-family="Georgia, serif" font-weight="bold">"R"</text></svg></div>
-                    <span class="art-tag tag-one">"{ Rust }"</span><span class="art-tag tag-two">"Backend"</span><span class="art-tag tag-three">"Web3"</span><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span>
-                    <div class="art-footer"><span>"RELIABILITY BY DESIGN"</span><span>"↗"</span></div>
-                </div>
+                <figure class="hero-portrait">
+                    <div class="portrait-frame"><img src="/rjay-solamo.jpg" alt="Portrait of Rjay Solamo" width="208" height="236" fetchpriority="high"/></div>
+                    <figcaption><span>"Rjay Solamo"</span><span>"Davao City, Philippines"</span></figcaption>
+                </figure>
             </section>
             <div class="tech-strip"><div class="container"><span class="mono">"IN THE TOOLKIT"</span>{["Rust", "Axum", "Leptos", "Solidity", "TypeScript", "PostgreSQL", "Web3"].into_iter().map(|t| view! { <span class="tech"><span class="tech-symbol">"◇"</span>{t}</span> }).collect_view()}</div></div>
             <section id="projects" class="section container">

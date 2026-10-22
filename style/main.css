@@ -239,110 +239,32 @@ em{
   background:#616c59;
   margin:0 2px
 }
-.engineering-art{
-  height:400px;
-  position:relative;
-  background-image:radial-gradient(#3a453333 .8px,transparent .8px);
-  background-size:18px 18px;
-  overflow:hidden
+.hero-portrait{
+  width:min(100%, 290px);
+  margin:0 auto;
 }
-.art-label,.art-footer{
-  position:absolute;
-  left:20px;
-  right:20px;
+.portrait-frame{
+  padding:10px;
+  border:1px solid #424b3e;
+  border-radius:6px;
+  background:var(--panel);
+}
+.hero-portrait img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:2px;
+}
+.hero-portrait figcaption{
   display:flex;
-  justify-content:space-between;
-  font:9px var(--mono);
-  color:#6c7963;
-  letter-spacing:1px
+  flex-direction:column;
+  gap:3px;
+  margin-top:15px;
+  font:10px/1.7 var(--mono);
+  color:var(--muted);
 }
-.art-label{
-  top:15px
-}
-.art-footer{
-  bottom:14px
-}
-.orbit{
-  border:1px solid #3b493366;
-  border-radius:50%;
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%)
-}
-.orbit-one{
-  width:280px;
-  height:280px
-}
-.orbit-two{
-  width:365px;
-  height:365px;
-  border-style:dashed
-}
-.axis{
-  position:absolute;
-  background:#3b493333
-}
-.axis-x{
-  height:1px;
-  top:50%;
-  left:0;
-  right:0
-}
-.axis-y{
-  width:1px;
-  left:50%;
-  top:30px;
-  bottom:30px
-}
-.rust-emblem{
-  position:absolute;
-  width:195px;
-  height:195px;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  color:#b1cc94;
-  background:#141912;
-  border-radius:50%;
-  box-shadow:0 0 70px #8fac6b0c
-}
-.art-tag{
-  position:absolute;
-  font:11px var(--mono);
-  padding:5px 12px;
-  background:#172015;
-  border:1px solid #394a30;
-  border-radius:3px;
-  color:#a8bf95
-}
-.tag-one{
-  top:52px;
-  left:36%
-}
-.tag-two{
-  top:51%;
-  right:0
-}
-.tag-three{
-  bottom:49px;
-  left:15%
-}
-.orbit-dot{
-  position:absolute;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#97b779;
-  box-shadow:0 0 0 5px #97b77912
-}
-.dot-one{
-  left:17%;
-  top:33%
-}
-.dot-two{
-  right:31%;
-  bottom:19%
+.hero-portrait figcaption span:first-child{
+  color:var(--green);
 }
 .tech-strip{
   border-block:1px solid var(--line);
@@ -898,9 +820,6 @@ h2{
     padding-top:105px;
     padding-bottom:85px
   }
-  .engineering-art{
-    height:430px
-  }
 }
 @media(max-width:1100px){
   .container{
@@ -927,21 +846,6 @@ h2{
   }
   .hero-actions>.text-link{
     font-size:10px
-  }
-  .engineering-art{
-    height:350px
-  }
-  .orbit-two{
-    width:310px;
-    height:310px
-  }
-  .orbit-one{
-    width:240px;
-    height:240px
-  }
-  .rust-emblem{
-    width:170px;
-    height:170px
   }
   .project-title{
     flex-wrap:wrap
@@ -1022,6 +926,10 @@ h2{
     padding-bottom:32px;
     gap:20px
   }
+  .hero-portrait{
+    width:min(100%, 250px);
+    margin-top:12px;
+  }
   .hero h1{
     font-size:52px;
     letter-spacing:-2px
@@ -1051,38 +959,6 @@ h2{
     font-size:8px;
     gap:6px;
     flex-wrap:wrap
-  }
-  .engineering-art{
-    height:280px;
-    max-width:440px;
-    width:100%;
-    margin:auto
-  }
-  .orbit-two{
-    width:260px;
-    height:260px
-  }
-  .orbit-one{
-    width:195px;
-    height:195px
-  }
-  .rust-emblem{
-    width:140px;
-    height:140px
-  }
-  .tag-one{
-    top:25px
-  }
-  .tag-three{
-    bottom:20px
-  }
-  .tag-two{
-    right:5%
-  }
-  .art-label,.art-footer{
-    font-size:7px;
-    left:5px;
-    right:5px
   }
   .tech-strip>.container{
     flex-wrap:wrap;
