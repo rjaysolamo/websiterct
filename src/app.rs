@@ -30,7 +30,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
     provide_meta_context();
     view! {
-        <Stylesheet id="leptos" href="/pkg/rjay-portfolio.css"/>
+        <Stylesheet id="leptos" href=concat!("/pkg/rjay-portfolio.css?v=", env!("PORTFOLIO_STYLE_VERSION"))/>
         <Router>
             <Routes fallback=NotFound><Route path=StaticSegment("") view=Home/></Routes>
         </Router>

@@ -51,7 +51,7 @@ pub(crate) fn TechnicalStack() -> impl IntoView {
                     <div class="dashboard-row"><div><strong class:rust-accent=*name == "Rust">{*name}</strong><span>{*label}</span></div><div class="skill-marks" aria-hidden="true">{(0..4).map(|index| view! { <span class:filled=index < *marks></span> }).collect_view()}</div></div>
                 }).collect_view()}</div>
                 <p class="dashboard-disclaimer">"* Bars represent qualitative proficiency, not fabricated percentages."</p>
-                <p class="small muted">"TypeScript and JavaScript describe previous or existing project work. This website uses Rust for application logic, with HTML and custom CSS for presentation."</p>
+                <p class="small muted">"TypeScript and JavaScript describe previous or existing project work. This website uses Rust for application logic and style definitions, with HTML and generated CSS for presentation."</p>
                 <div class="rust-stack"><span class="mono rust-accent">"THIS SITE’S RUST STACK"</span><p>"Leptos · Axum · Tokio · Serde"</p><p class="muted">"Also used in project work: PostgreSQL, SQL, Linux & Termux."</p></div>
             </aside></div>
         </div></section>

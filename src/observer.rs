@@ -18,36 +18,31 @@ const EVENTS: [&str; 12] = [
 ];
 const PHASES: [&str; 4] = ["PENDING", "PROPAGATING", "VERIFYING", "CONFIRMED"];
 const CRYPTO: [&str; 4] = ["SHA256(...)", "SIGN(...)", "VERIFY(...)", "VALID"];
-const NODES: [(&str, &str, &str, &str); 5] = [
+const NODES: [(&str, &str, &str); 5] = [
     (
         "RPC",
         "NODE 01",
         "RPC endpoint · receives the sample transaction",
-        "13.1%; top: 30.4%",
     ),
     (
         "PEER",
         "NODE 02",
         "Peer · propagates the sample transaction",
-        "45.2%; top: 18.3%",
     ),
     (
         "VERIFY",
         "VALIDATOR",
         "Validator · illustrates signature and block checks",
-        "45.2%; top: 73.9%",
     ),
     (
         "BLOCK",
         "BUILDER",
         "Block builder · groups the verified sample into a block",
-        "82.1%; top: 30.4%",
     ),
     (
         "ONCHAIN",
         "STATE",
         "State replica · illustrates the committed result",
-        "82.1%; top: 81.7%",
     ),
 ];
 // Indices refer to NODES. The four transaction hops use edges 0, 2, 4 and 5.
@@ -171,7 +166,6 @@ pub(crate) fn NetworkObserver() -> impl IntoView {
                     // CSS supplies the clock; the Rust handler advances the bounded model.
                     // Pausing CSS freezes both the visual and the next state transition.
                     <span class="observer-clock" aria-hidden="true"
-                        style=format!("animation-duration: {STEP_SECONDS}s")
                         on:animationiteration=move |_| {
                             if running() { simulation.update(Simulation::advance); }
                         }></span>
@@ -188,8 +182,8 @@ pub(crate) fn NetworkObserver() -> impl IntoView {
                                 <circle r="3" cx="190" cy="170" class="observer-particle hop-three"/>
                                 <circle r="3" cx="345" cy="70" class="observer-particle hop-four"/>
                             </svg>
-                            {NODES.into_iter().enumerate().map(|(index, (name, label, role, position))| view! {
-                                <button type="button" class="observer-node" style=format!("left: {position}")
+                            {NODES.into_iter().enumerate().map(|(index, (name, label, role))| view! {
+                                <button type="button" class="observer-node" data-node=index
                                     title=role aria-label=format!("{name}: {role}. Select to highlight connections.")
                                     aria-pressed=move || (selected.get() == Some(index)).to_string()
                                     disabled=move || !ready.get()

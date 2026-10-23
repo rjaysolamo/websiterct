@@ -33,6 +33,7 @@ async fn main() -> Result<()> {
     let robots = format!("User-agent: *\nAllow: /\nSitemap: {origin}/sitemap.xml\n");
 
     let app = Router::new()
+        .route("/pkg/rjay-portfolio.css", get(stylesheet))
         .route(
             "/sitemap.xml",
             get(move || {
@@ -67,6 +68,18 @@ async fn main() -> Result<()> {
         .await
         .context("HTTP server terminated unexpectedly")?;
     Ok(())
+}
+
+/// Build-generated presentation is embedded so deployment needs no source stylesheet.
+#[cfg(feature = "ssr")]
+async fn stylesheet() -> impl axum::response::IntoResponse {
+    (
+        [
+            (axum::http::header::CONTENT_TYPE, "text/css; charset=utf-8"),
+            (axum::http::header::CACHE_CONTROL, "no-cache"),
+        ],
+        include_str!(concat!(env!("OUT_DIR"), "/portfolio.css")),
+    )
 }
 
 /// Missing configuration retains the local default; malformed configured values fail safely.

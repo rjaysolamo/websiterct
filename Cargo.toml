@@ -51,7 +51,6 @@ site-root = "target/site"
 
 site-pkg-dir = "pkg"
 
-style-file = "style/main.css"
 assets-dir = "public"
 
 site-addr = "0.0.0.0:3000"
