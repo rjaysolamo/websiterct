@@ -6,6 +6,8 @@ A portfolio for Rjay Solamo, Web3 Engineer / Blockchain Builder. Application log
 
 Install Rust using [rustup](https://rustup.rs), then from this directory:
 
+The package uses **Rust Edition 2024**, the latest stable edition listed in the [Cargo reference](https://doc.rust-lang.org/cargo/reference/manifest.html#the-edition-field). It was stabilized in [Rust 1.85.0](https://doc.rust-lang.org/edition-guide/rust-2024/index.html). The compiler remains pinned to **1.99.1** in `rust-toolchain.toml`; the full dependency graph is verified with that compiler, not with the edition's original minimum compiler.
+
 ```bash
 rustup toolchain install 1.99.1 --profile minimal --component rustfmt,clippy --target wasm32-unknown-unknown
 cargo install cargo-leptos --version 0.3.11 --locked
@@ -28,7 +30,13 @@ cargo test --workspace --features ssr --locked
 cargo leptos build --release --cargo-locked
 ```
 
-Do not enable `ssr` and `hydrate` together: they are separate server and browser compilation targets, so Clippy uses separate feature/target invocations rather than `--all-features`. There is one Cargo package, not a multi-package workspace. No unit tests currently exist; the Cargo test commands verify the test and documentation build targets. Check desktop and narrow mobile layouts, keyboard focus, mobile menu open/close/Escape, all section links, project links, architecture and community disclosures, and `/missing` returning a 404. There are no form inputs or server-side user mutations in this version.
+Do not enable `ssr` and `hydrate` together: they are separate server and browser compilation targets, so Clippy uses separate feature/target invocations rather than `--all-features`. There is one Cargo package, not a multi-package workspace. Unit tests cover observer replay and startup origin validation, including safe errors and retained parse-error sources. Check desktop and narrow mobile layouts, keyboard focus, mobile menu open/close/Escape, all section links, project links, architecture and community disclosures, and `/missing` returning a 404. There are no form inputs or server-side user mutations in this version.
+
+### Error handling
+
+Server startup and origin validation use `anyhow::Result` with context for configuration, URI parsing, socket binding, and server failures. `anyhow` is enabled only for SSR; browser bindings retain their `JsValue` errors and report safe diagnostics when optional APIs are unavailable. Existing Axum/Leptos response types and the 404 page remain intact. Startup diagnostics go to the server process, never into HTTP responses. No live GitHub or RPC requests are made.
+
+An unset `SITE_ORIGIN` retains `http://localhost:3000`. A configured origin must contain valid Unicode and be an HTTP(S) origin without paths, queries, fragments, or credentials; invalid values stop startup with an error that does not repeat the configured value. Trailing slashes are normalized. Invalid-Unicode values previously fell back to the local default; they now fail explicitly. Fragments are rejected explicitly because the HTTP URI parser otherwise discards them during validation.
 
 ## Editing content and publication checklist
 

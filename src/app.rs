@@ -1,11 +1,11 @@
-use crate::content::{Project, EMAIL, GITHUB};
+use crate::content::{EMAIL, GITHUB, Project};
 use crate::observer::NetworkObserver;
 use crate::sections::*;
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, Meta, MetaTags, Stylesheet, Title};
+use leptos_meta::{Meta, MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
-    components::{Route, Router, Routes},
     StaticSegment,
+    components::{Route, Router, Routes},
 };
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {

@@ -1,12 +1,13 @@
 [package]
 name = "rjay-portfolio"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+anyhow = { version = "1.0", optional = true }
 leptos = { version = "0.8.0" }
 leptos_router = { version = "0.8.0" }
 axum = { version = "0.8.0", optional = true }
@@ -27,6 +28,7 @@ hydrate = [
     "dep:web-sys",
 ]
 ssr = [
+    "dep:anyhow",
     "dep:axum",
     "dep:tokio",
     "dep:leptos_axum",

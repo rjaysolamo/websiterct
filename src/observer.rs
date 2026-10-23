@@ -105,11 +105,7 @@ impl Simulation {
     }
 
     fn latest_block(self) -> u16 {
-        if self.step >= 8 {
-            2049
-        } else {
-            2048
-        }
+        if self.step >= 8 { 2049 } else { 2048 }
     }
 
     fn recent_events(self) -> impl Iterator<Item = (usize, &'static str)> {
@@ -301,22 +297,35 @@ fn connect_browser(
     reduced: RwSignal<bool>,
 ) {
     use leptos::__reexports::send_wrapper::SendWrapper;
-    use wasm_bindgen::{closure::Closure, JsCast};
-    use web_sys::{js_sys::Array, IntersectionObserver, IntersectionObserverEntry};
+    use wasm_bindgen::{JsCast, closure::Closure};
+    use web_sys::{IntersectionObserver, IntersectionObserverEntry, js_sys::Array};
 
     let intersection = Closure::<dyn FnMut(Array)>::new(move |entries: Array| {
         if let Some(entry) = entries.get(0).dyn_ref::<IntersectionObserverEntry>() {
             visible.set(entry.is_intersecting());
         }
     });
-    let observer = IntersectionObserver::new(intersection.as_ref().unchecked_ref()).ok();
+    let observer = match IntersectionObserver::new(intersection.as_ref().unchecked_ref()) {
+        Ok(observer) => Some(observer),
+        Err(_) => {
+            leptos::logging::warn!(
+                "Observer visibility API unavailable; offscreen pausing is disabled."
+            );
+            None
+        }
+    };
     if let Some(observer) = &observer {
         observer.observe(&element);
     }
-    let media = window()
-        .match_media("(prefers-reduced-motion: reduce)")
-        .ok()
-        .flatten();
+    let media = match window().match_media("(prefers-reduced-motion: reduce)") {
+        Ok(Some(query)) => Some(query),
+        Ok(None) | Err(_) => {
+            leptos::logging::warn!(
+                "Motion preference API unavailable; using the manual observer walkthrough."
+            );
+            None
+        }
+    };
     reduced.set(media.as_ref().is_none_or(|query| query.matches()));
     let media_query = media.clone();
     let motion_change = Closure::<dyn FnMut()>::new(move || {
@@ -391,8 +400,10 @@ mod tests {
             assert_eq!(simulation.active_node(), to);
         }
         assert_eq!(destination, NODES.len() - 1);
-        assert!(EDGES
-            .iter()
-            .all(|(from, to, _)| *from < NODES.len() && *to < NODES.len()));
+        assert!(
+            EDGES
+                .iter()
+                .all(|(from, to, _)| *from < NODES.len() && *to < NODES.len())
+        );
     }
 }

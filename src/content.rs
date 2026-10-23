@@ -26,12 +26,27 @@ pub const PROJECTS: &[Project] = &[
         name: "AirChainPay",
         category: "Blockchain Payments",
         description: "A self-custodial multi-chain payment platform exploring offline transaction workflows and Bluetooth-based communication.",
-        features: &["Self-custodial architecture", "Multi-chain payment concepts", "Offline transaction workflows", "Bluetooth communication", "Cryptographic signing"],
-        stack: &["Rust", "Solidity", "TypeScript", "Blockchain", "Cryptography"],
+        features: &[
+            "Self-custodial architecture",
+            "Multi-chain payment concepts",
+            "Offline transaction workflows",
+            "Bluetooth communication",
+            "Cryptographic signing",
+        ],
+        stack: &[
+            "Rust",
+            "Solidity",
+            "TypeScript",
+            "Blockchain",
+            "Cryptography",
+        ],
         status: "Experimental · Testnet",
         note: "Offline workflows remain experimental. The Rust relay documents incomplete transaction compression; this is not a production payment service.",
         repository: Some("https://github.com/rjaysolamo/airchainpay"),
-        related_source: Some(("Rust relay source", "https://github.com/rjaysolamo/airchainpay/tree/main/airchainpay-relay-rust/airchainpay-relay")),
+        related_source: Some((
+            "Rust relay source",
+            "https://github.com/rjaysolamo/airchainpay/tree/main/airchainpay-relay-rust/airchainpay-relay",
+        )),
         demo: None,
         visual: "payment",
     },
@@ -39,7 +54,13 @@ pub const PROJECTS: &[Project] = &[
         name: "CredForge",
         category: "Decentralized Credentials",
         description: "A blockchain-based credential platform designed for issuing, verifying, and revoking digital credentials on Sui.",
-        features: &["Credential issuance", "Credential verification", "Revocation design", "Onchain registry", "Soulbound credentials"],
+        features: &[
+            "Credential issuance",
+            "Credential verification",
+            "Revocation design",
+            "Onchain registry",
+            "Soulbound credentials",
+        ],
         stack: &["Sui", "Move", "TypeScript"],
         status: "Prototype",
         note: "The repository documents a testnet deployment, not independently verified here. Issuer-side revocation has a documented ownership limitation.",
@@ -52,7 +73,13 @@ pub const PROJECTS: &[Project] = &[
         name: "University Onchain Voting",
         category: "Onchain Governance",
         description: "A decentralized university voting platform designed to provide transparent election management and blockchain-based voting.",
-        features: &["Election management", "Candidate registration", "Onchain voting", "Smart contracts", "Transparent election state"],
+        features: &[
+            "Election management",
+            "Candidate registration",
+            "Onchain voting",
+            "Smart contracts",
+            "Transparent election state",
+        ],
         stack: &["Solidity", "TypeScript", "Smart Contracts"],
         status: "Prototype · Fork",
         note: "Linked source is a fork of RICKYLER/blockchin-voting. Election and voting methods are present; deployment and individual contribution scope are not verified.",
@@ -65,7 +92,12 @@ pub const PROJECTS: &[Project] = &[
         name: "Proof of Contribution",
         category: "Web3 Infrastructure",
         description: "A concept for transforming community contributions and completed work into verifiable onchain reputation.",
-        features: &["Proof of contribution", "Onchain reputation", "Community rewards", "Verifiable work history"],
+        features: &[
+            "Proof of contribution",
+            "Onchain reputation",
+            "Community rewards",
+            "Verifiable work history",
+        ],
         stack: &["Solidity", "TypeScript", "Cryptography"],
         status: "Concept",
         note: "Proposed capabilities and technology direction. A public repository, working demo, and deployed contracts have not been verified.",
@@ -159,13 +191,41 @@ pub const PRINCIPLES: &[(&str, &str)] = &[
 ];
 
 pub const LAYERS: &[(&str, &str, &str)] = &[
-    ("User", "intent", "Initiates an action and decides what to authorize."),
-    ("Frontend", "interface", "Presents the interface and wallet interaction. Makes the intended action understandable before signing."),
-    ("API / Backend", "coordinate", "Processes requests, validates inputs, and coordinates services without assuming the client is trusted."),
-    ("Smart Contract", "rules", "Enforces onchain business rules and checks authorized state transitions."),
-    ("Cryptographic Verification", "verify", "Validates signatures and proofs as required by the protocol."),
-    ("Blockchain", "execute", "Executes and records transactions under the network’s consensus rules."),
-    ("Onchain State", "commit", "Stores the resulting verifiable state."),
+    (
+        "User",
+        "intent",
+        "Initiates an action and decides what to authorize.",
+    ),
+    (
+        "Frontend",
+        "interface",
+        "Presents the interface and wallet interaction. Makes the intended action understandable before signing.",
+    ),
+    (
+        "API / Backend",
+        "coordinate",
+        "Processes requests, validates inputs, and coordinates services without assuming the client is trusted.",
+    ),
+    (
+        "Smart Contract",
+        "rules",
+        "Enforces onchain business rules and checks authorized state transitions.",
+    ),
+    (
+        "Cryptographic Verification",
+        "verify",
+        "Validates signatures and proofs as required by the protocol.",
+    ),
+    (
+        "Blockchain",
+        "execute",
+        "Executes and records transactions under the network’s consensus rules.",
+    ),
+    (
+        "Onchain State",
+        "commit",
+        "Stores the resulting verifiable state.",
+    ),
 ];
 
 pub const CRYPTO_CONCEPTS: &[(&str, &str)] = &[
@@ -188,10 +248,38 @@ pub struct Experience {
 }
 
 pub const EXPERIENCE: &[Experience] = &[
-    Experience { role: "Rust Developer", organization: "Tekkio", kind: "Development", date: "Dates not supplied", location: "", description: "Rust backend systems, CLI development, node configuration, node logging, and statistics and query systems. Infrastructure and node-related development." },
-    Experience { role: "Smart Contract Developer", organization: "Reverion Technology", kind: "Development", date: "December 2024 – June 2025", location: "Davao City, Philippines", description: "Smart contracts, blockchain applications, Web3 integration, and backend systems." },
-    Experience { role: "Core Developer", organization: "Davao DeFi Devcore", kind: "Community contribution", date: "Dates not supplied", location: "Davao City, Philippines", description: "Blockchain development, Web3 architecture, decentralized applications, and the developer ecosystem. Technical education, talks, and workshops." },
-    Experience { role: "Co-Founder", organization: "Web3 Davao", kind: "Community leadership", date: "Current status to be verified", location: "Davao City, Philippines", description: "Web3 developer community, blockchain education, technical events, developer ecosystem, and blockchain projects. Current affiliation awaits confirmation." },
+    Experience {
+        role: "Rust Developer",
+        organization: "Tekkio",
+        kind: "Development",
+        date: "Dates not supplied",
+        location: "",
+        description: "Rust backend systems, CLI development, node configuration, node logging, and statistics and query systems. Infrastructure and node-related development.",
+    },
+    Experience {
+        role: "Smart Contract Developer",
+        organization: "Reverion Technology",
+        kind: "Development",
+        date: "December 2024 – June 2025",
+        location: "Davao City, Philippines",
+        description: "Smart contracts, blockchain applications, Web3 integration, and backend systems.",
+    },
+    Experience {
+        role: "Core Developer",
+        organization: "Davao DeFi Devcore",
+        kind: "Community contribution",
+        date: "Dates not supplied",
+        location: "Davao City, Philippines",
+        description: "Blockchain development, Web3 architecture, decentralized applications, and the developer ecosystem. Technical education, talks, and workshops.",
+    },
+    Experience {
+        role: "Co-Founder",
+        organization: "Web3 Davao",
+        kind: "Community leadership",
+        date: "Current status to be verified",
+        location: "Davao City, Philippines",
+        description: "Web3 developer community, blockchain education, technical events, developer ecosystem, and blockchain projects. Current affiliation awaits confirmation.",
+    },
 ];
 
 pub const COMMUNITIES: &[(&str, &str)] = &[
@@ -260,12 +348,42 @@ pub struct Repository {
 // Primary languages are GitHub's reported classifications, checked 2026-10-23.
 // No counts, popularity metrics, activity graphs, or live API calls.
 pub const REPOSITORIES: &[Repository] = &[
-    Repository { name: "uwifin", description: "A Web3 financial application exploring cross-border transfers for Filipinos sending money home. Rust backend and Web3 settlement in development.", language: "Rust", url: "https://github.com/rjaysolamo/uwifin" },
-    Repository { name: "InDexAI", description: "AI-assisted blockchain indexer for transaction tracing, wallet analysis, and crypto investigations. Investigation capabilities are in development.", language: "TypeScript", url: "https://github.com/rjaysolamo/InDexAI" },
-    Repository { name: "SqueezeAT", description: "A local-first AI gateway for optimizing LLM API usage and supporting coding agents.", language: "Rust", url: "https://github.com/rjaysolamo/SqueezeAT" },
-    Repository { name: "airchainpay", description: "Self-custodial multi-chain mobile wallet and payment experiments. Includes a Rust relay and wallet core.", language: "TypeScript", url: "https://github.com/rjaysolamo/airchainpay" },
-    Repository { name: "web3lab", description: "Web3 application and infrastructure experiments. Explore the source for the current implementation.", language: "TypeScript", url: "https://github.com/rjaysolamo/web3lab" },
-    Repository { name: "rjay", description: "Earlier portfolio source and web development work.", language: "TypeScript", url: "https://github.com/rjaysolamo/rjay" },
+    Repository {
+        name: "uwifin",
+        description: "A Web3 financial application exploring cross-border transfers for Filipinos sending money home. Rust backend and Web3 settlement in development.",
+        language: "Rust",
+        url: "https://github.com/rjaysolamo/uwifin",
+    },
+    Repository {
+        name: "InDexAI",
+        description: "AI-assisted blockchain indexer for transaction tracing, wallet analysis, and crypto investigations. Investigation capabilities are in development.",
+        language: "TypeScript",
+        url: "https://github.com/rjaysolamo/InDexAI",
+    },
+    Repository {
+        name: "SqueezeAT",
+        description: "A local-first AI gateway for optimizing LLM API usage and supporting coding agents.",
+        language: "Rust",
+        url: "https://github.com/rjaysolamo/SqueezeAT",
+    },
+    Repository {
+        name: "airchainpay",
+        description: "Self-custodial multi-chain mobile wallet and payment experiments. Includes a Rust relay and wallet core.",
+        language: "TypeScript",
+        url: "https://github.com/rjaysolamo/airchainpay",
+    },
+    Repository {
+        name: "web3lab",
+        description: "Web3 application and infrastructure experiments. Explore the source for the current implementation.",
+        language: "TypeScript",
+        url: "https://github.com/rjaysolamo/web3lab",
+    },
+    Repository {
+        name: "rjay",
+        description: "Earlier portfolio source and web development work.",
+        language: "TypeScript",
+        url: "https://github.com/rjaysolamo/rjay",
+    },
 ];
 
 pub const WRITING: &[(&str, &str)] = &[
