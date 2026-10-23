@@ -1,3 +1,6 @@
+// Match the library limit for Leptos's nested view types in optimized builds.
+#![recursion_limit = "256"]
+
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

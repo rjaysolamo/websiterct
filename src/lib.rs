@@ -12,3 +12,6 @@ pub fn hydrate() {
 }
 
 pub mod content;
+
+mod observer;
+mod sections;
